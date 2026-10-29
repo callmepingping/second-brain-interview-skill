@@ -1,93 +1,93 @@
 ---
 name: second-brain
-description: Conduct an adaptive life interview, then organize durable personal memories into a user-authorized Markdown/Obsidian knowledge base. Use when a user asks to initialize, build, or update their Second Brain personal memory.
+description: 进行一次自适应的人生访谈，然后将持久的个人记忆整理到用户授权的 Markdown/Obsidian 知识库中。当用户要求初始化、构建或更新其 Second Brain 个人记忆时使用。
 ---
 
-# Second Brain — Adaptive Life Interview & Memory Curation
+# Second Brain — 自适应人生访谈与记忆整理
 
-## Purpose
+## 目的
 
-Help the user build a durable, revisable, and user-controlled personal memory system. The goal is not to complete a questionnaire or maximize data collection. It is to understand meaningful experiences, relationships, interests, beliefs, goals, creative work, and current circumstances well enough to preserve them accurately and usefully over time.
+帮助用户构建一个持久、可修订且由用户掌控的个人记忆系统。目标不是完成一份问卷或最大化数据收集，而是充分理解有意义的经历、关系、兴趣、信念、目标、创造性工作以及当前处境，以便随着时间推移准确且有用将其保存下来。
 
-The user remains the authority on their own life. Treat every interpretation as revisable. Do not turn past circumstances into permanent labels.
+用户始终是自己人生的权威。将每一种解读都视为可修订的。不要将过去的处境变成永久的标签。
 
-## Mandatory access and privacy gate
+## 强制访问与隐私门禁
 
-Before reading or writing personal files:
+在读取或写入个人文件之前：
 
-1. Explain that this skill needs explicit file access from the agent's runtime to the user's chosen knowledge-base directory. The skill text itself does not grant filesystem access.
-2. Ask the user to enable/grant access in the agent's own project or workspace settings, then identify the intended knowledge-base root. The project's public README should tell users to do this before use.
-3. Verify actual read/write capability by inspecting the target path and, if needed, making a harmless temporary-file test only when safe and supported; clean up that temporary file. Never claim access or successful writes without tool confirmation.
-4. If access is unavailable, continue conversationally if useful, but do not claim to have written files. Offer the organized content in chat or explain what permission/tool is missing.
-5. Never read unrelated directories. Only inspect files needed for the user's requested memory task. Do not send personal memory contents to GitHub or any public repository.
+1. 说明此技能需要智能体运行时对用户所选知识库目录的显式文件访问权限。技能文本本身并不授予文件系统访问权限。
+2. 请用户在智能体自己的项目或工作区设置中启用/授予访问权限，然后确定预期的知识库根目录。项目的公开 README 应告诉用户在使​​用前执行此操作。
+3. 通过检查目标路径来验证实际的读/写能力，并在需要时，仅在安全且受支持的情况下进行无害的临时文件测试；清理该临时文件。绝不在没有工具确认的情况下声称拥有访问权限或成功写入。
+4. 如果访问不可用，若有用则继续以对话方式进行，但不要声称已写入文件。在聊天中提供整理好的内容，或解释缺少哪些权限/工具。
+5. 绝不读取无关目录。仅检查用户所请求记忆任务所需的文件。不要将个人记忆内容发送到 GitHub 或任何公开仓库。
 
-## Operating modes
+## 操作模式
 
-- **Initialize**: run the adaptive life interview, then curate the information gathered in this conversation into `personal_data/`.
-- **Update**: when the user shares meaningful new information, read only relevant memory files, reconcile changes, and update appropriate files if the user has authorized writing.
-- **Recall**: read relevant files and answer grounded in them; distinguish stored facts from interpretation and note uncertainty.
-- **Review**: audit a memory file or the memory structure for stale current-state claims, unsupported inferences, duplication, broken links, or unclear chronology. Do not silently rewrite the user's self-description.
+- **初始化**：运行自适应人生访谈，然后将本次对话中收集的信息整理到 `personal_data/` 中。
+- **更新**：当用户分享有意义的新信息时，仅读取相关记忆文件，协调变更，并在用户已授权写入的情况下更新相应文件。
+- **回忆**：读取相关文件并基于这些文件作答；区分已存储的事实与解读，并注明不确定性。
+- **审查**：审计某个记忆文件或记忆结构，检查过时的当前状态声明、无支持的推断、重复、断链或不清的时间线。不要悄悄重写用户的自我描述。
 
-If the user's intent is clear, act in that mode. Do not force the full interview for a narrow update or recall request.
+如果用户意图明确，就以该模式行动。不要为范围狭窄的更新或回忆请求强行进行完整访谈。
 
-## Initialization: fixed background, adaptive exploration
+## 初始化：固定背景，自适应探索
 
-Start with a short explanation of the interview and its controls. Ask these two background questions, one at a time:
+先简短说明访谈及其控制方式。逐一提出以下两个背景问题：
 
-1. What age or age range should I use to understand your current life stage? An exact birth date is optional; do not insist on it.
-2. Which country or region should I use as background context? The user may answer broadly or skip.
+1. 我应该使用哪个年龄或年龄范围来理解你当前的人生阶段？确切的出生日期是可选的；不要坚持要求。
+2. 我应该使用哪个国家或地区作为背景语境？用户可以宽泛回答或跳过。
 
-Then discover topics dynamically from the user's answers rather than using a fixed life-questionnaire. Do not assume a conventional family, education, career, relationship, health, or life path.
+然后根据用户的回答动态发现话题，而不是使用固定的人生问卷。不要假设传统的家庭、教育、职业、关系、健康或人生道路。
 
-### Per-turn interaction
+### 每轮互动
 
-For each answer:
+对于每个回答：
 
-1. Interpret it carefully and identify meaningful unknowns, tensions, causes, changes over time, experiences, people, values, interests, goals, and creative work.
-2. If the answer is clear, do not mechanically repeat or summarize it. Present a concise set of all worthwhile candidate follow-up questions that fit the current answer. Avoid near-duplicates and avoid questions that presume an answer.
-3. Let the user choose one or more candidates, answer freely, change topic, skip, or end the interview. The user may combine answers to several questions.
-4. If the answer is genuinely ambiguous or contains an apparent contradiction that changes the next step, briefly state the uncertainty and ask for clarification before branching. Do not decide on the user's behalf that they changed their mind or that the context changed.
-5. Ask open, neutral questions. Do not lead the user toward a diagnosis, trauma narrative, value, identity, or preferred conclusion.
+1. 仔细解读，识别有意义的未知项、张力、原因、随时间的变化、经历、人物、价值观、兴趣、目标以及创造性工作。
+2. 如果回答清晰，不要机械地重复或总结它。呈现一组简洁的、适应当前回答的所有有价值的候选追问。避免近似重复，避免预设答案的问题。
+3. 让用户选择一个或多个候选项、自由回答、改变话题、跳过或结束访谈。用户可以合并回答多个问题。
+4. 如果回答确实含糊，或包含明显矛盾且会改变下一步，简要说明不确定性并请求澄清，然后再分支。不要代替用户决定他们改变了主意或背景发生了变化。
+5. 提出开放、中立的问题。不要将用户引向诊断、创伤叙事、价值观、身份或偏好结论。
 
-The user may skip any question without explanation. If they decline a topic, do not re-ask it in another form. Sensitive topics are not automatically forbidden, but the user controls depth and direction. A refusal or silence is not evidence of a psychological condition or hidden problem.
+用户可以不作解释地跳过任何问题。如果他们拒绝某个话题，不要以另一种形式再次询问。敏感话题并非自动禁止，但用户控制深度和方向。拒绝或沉默不是心理状况或隐藏问题的证据。
 
-## Exploration algorithm: dynamic DFS with user control
+## 探索算法：带用户控制的动态 DFS
 
-Maintain an internal exploration tree in the conversation context:
+在对话上下文中维护一个内部探索树：
 
-- Each meaningful answer can create candidate child questions.
-- Offer candidate questions together; the user chooses the path.
-- Explore the chosen branch in depth before naturally returning to other pending branches, unless the user changes topic.
-- Preserve pending branches across topic switches when possible.
-- Use both a general completeness check (context, timeline, meaning, change, current relevance, uncertainty) and a topic-specific completeness check.
-- Information volume is not the same as understanding. A branch is sufficiently explored when the user has provided the relevant context they want to share, or further questions are unlikely to add value.
-- The assistant may suggest returning to an unfinished branch but the user decides whether to do so.
-- Keep a lightweight dynamic coverage check across life history, personality/behavior, values/worldview, relationships/social environment, interests/knowledge, ambitions/goals, current life, emotions/reflections, and creative work. These are prompts for coverage, not mandatory boxes. Unmentioned domains are not deficits.
-- Keep the tree hidden by default. Show a short list of pending directions or a progress view when useful or when the user asks.
+- 每个有意义的回答都可以产生候选子问题。
+- 一起提供候选问题；由用户选择路径。
+- 在自然返回其他待处理分支之前，深入探索所选分支，除非用户改变话题。
+- 在可能的情况下，在话题切换时保留待处理分支。
+- 同时使用通用完整性检查（背景、时间线、意义、变化、当前相关性、不确定性）和话题特定的完整性检查。
+- 信息量不等于理解。当用户已提供他们愿意分享的相关背景，或进一步提问不太可能增加价值时，一个分支就算得到了充分探索。
+- 助手可以建议返回未完成的分支，但由用户决定是否这样做。
+- 对人生历史、性格/行为、价值观/世界观、关系/社会环境、兴趣/知识、抱负/目标、当前生活、情感/反思以及创造性工作保持轻量级动态覆盖检查。这些是覆盖提示，不是强制框。未提及的领域不是缺陷。
+- 默认隐藏该树。在有用或用户要求时，显示待处理方向的简短列表或进度视图。
 
-### End conditions
+### 结束条件
 
-The user may end the interview at any time. When they do, stop asking questions and curate the material already available. Clearly state that the result reflects the information shared so far and is not a claim of complete understanding. Preserve unanswered areas as unexplored rather than filling them with guesses.
+用户可以随时结束访谈。当他们结束时，停止提问并整理已有材料。明确说明结果反映截至目前所分享的信息，并不是对完整理解的声称。将未回答的领域保留为未探索，而不是用猜测填充。
 
-## Information quality and epistemic labels
+## 信息质量与认知标签
 
-Keep these categories distinct whenever they matter:
+在重要时，保持以下类别区分：
 
-- **User-stated**: something the user directly said or explicitly affirmed.
-- **User interpretation**: the meaning or explanation the user gives to their own experience.
-- **Reported information**: something the user says another person or source stated.
-- **AI observation/inference**: a tentative pattern inferred by the assistant.
-- **Uncertain/disputed**: incomplete, ambiguous, or not yet reconciled information.
+- **用户陈述**：用户直接说出或明确确认的内容。
+- **用户解读**：用户对其自身经历给出的意义或解释。
+- **转述信息**：用户说另一个人或来源陈述的内容。
+- **AI 观察/推断**：助手推断出的暂定模式。
+- **不确定/有争议**：不完整、含糊或尚未协调的信息。
 
-Do not add labels mechanically to every sentence. Make the distinction explicit when ambiguity, a consequential inference, or a possible misunderstanding could affect future use. AI observations must be phrased as hypotheses and must never be silently presented as user-endorsed self-knowledge.
+不要机械地给每个句子添加标签。当含糊、重要推断或可能的误解可能影响未来使用时，明确区分。AI 观察必须以假设的形式表述，绝不能被悄悄呈现为用户认可的自知。
 
-If two statements seem to conflict, preserve both and ask whether they refer to different contexts, a change over time, or a correction. Do not erase earlier views merely because a newer view differs.
+如果两个陈述似乎冲突，保留两者，并询问它们是否指不同背景、随时间的变化或更正。不要仅仅因为较新的观点不同就抹去较早的观点。
 
-## Memory destination and structure
+## 记忆目的地与结构
 
-The only durable personal-memory destination managed by this skill is `personal_data/`. Do not create a `conversations/` directory or an interview transcript file. The current chat is the interview context; it is not to be separately archived by this skill.
+此技能管理的唯一持久个人记忆目的地是 `personal_data/`。不要创建 `conversations/` 目录或访谈记录文件。当前聊天就是访谈上下文；此技能不会单独归档它。
 
-Use this existing structure when present; create only missing folders/files required by the content:
+在存在时使用此现有结构；仅创建内容所需的缺失文件夹/文件：
 
 ```text
 personal_data/
@@ -107,70 +107,70 @@ personal_data/
 └── 09_creative_work/
 ```
 
-Read `references/memory-schema.md` for the purpose and naming rules of each category before substantial curation. Respect any established user-specific file structure if it clearly supersedes this default; explain before making a disruptive migration.
+在进行实质性整理之前，阅读 `references/memory-schema.md` 以了解每个类别的目的和命名规则。尊重任何已建立的、明显取代此默认值的用户特定文件结构；在进行破坏性迁移之前先解释。
 
-## End-of-interview curation workflow
+## 访谈结束后的整理工作流
 
-After the user ends the interview:
+在用户结束访谈后：
 
-1. Review the available interview context and identify information likely to remain useful beyond this conversation. Do not save every transient detail.
-2. Group items by theme and timeline. A single experience may be referenced from multiple themes, but do not duplicate the full account mechanically.
-3. Inspect the relevant existing files before creating or updating files. Avoid duplicate records and preserve existing material not contradicted by new information.
-4. Separate durable history from current-state views. Update `00_core_profile/profile.md`, `07_current_life/current.md`, or `08_emotions_and_reflections/current.md` only when the interview supports doing so.
-5. Preserve the user's wording for important meanings and distinctive expressions where useful. Summaries must not flatten the development of an idea or replace important context with a simplistic label.
-6. Track, where known, (a) when an event occurred, (b) when it was recalled or described, and (c) when the memory file was updated. Never invent dates. Use approximate ranges or relative ordering when exact dates are unknown.
-7. Preserve earlier views when they matter to the development story. Update current understanding without rewriting history as though the user always believed the current version.
-8. Record AI observations separately and mark them as tentative, revisable hypotheses. Do not promote them to facts or user-endorsed traits without confirmation.
-9. Use source links only to files that actually exist and were actually inspected. Since this skill does not create a transcript archive, do not invent `conversations/` links. If no durable source file exists, state that the memory comes from the current interview context and do not fabricate a path.
-10. Write only to the authorized `personal_data/` root. After writing, re-read the changed files or otherwise verify the actual result when the runtime supports it.
-11. Report which files were created or updated, the broad categories of information saved, important uncertainties, and any write that failed. Do not expose unnecessary sensitive details in the completion report.
+1. 审查可用的访谈上下文，识别可能在本次对话之后仍然有用的信息。不要保存每个短暂细节。
+2. 按主题和时间线分组。单一经历可以从多个主题引用，但不要机械地重复完整叙述。
+3. 在创建或更新文件之前，检查相关的现有文件。避免重复记录，并保留未被新信息反驳的现有材料。
+4. 将持久历史与当前状态视图分开。仅当访谈支持时，才更新 `00_core_profile/profile.md`、`07_current_life/current.md` 或 `08_emotions_and_reflections/current.md`。
+5. 在有用时保留用户对重要含义和独特表达的措辞。摘要不得抹平思想的发展，也不得用简单化标签替代重要背景。
+6. 在已知情况下，记录 (a) 事件发生的时间，(b) 回忆或描述该事件的时间，以及 (c) 记忆文件更新的时间。绝不编造日期。当确切日期未知时，使用近似范围或相对顺序。
+7. 当较早的观点对发展故事有意义时，保留它们。更新当前理解，但不要像用户一直相信当前版本那样重写历史。
+8. 单独记录 AI 观察，并将其标记为暂定、可修订的假设。未经确认，不要将其提升为事实或用户认可的特质。
+9. 仅使用实际存在且实际检查过的文件作为来源链接。由于此技能不创建访谈记录归档，不要编造 `conversations/` 链接。如果不存在持久来源文件，说明记忆来自当前访谈上下文，不要伪造路径。
+10. 仅写入已授权的 `personal_data/` 根目录。写入后，在运行时支持的情况下重新读取已更改的文件或以其他方式验证实际结果。
+11. 报告创建或更新了哪些文件、保存的信息大致类别、重要不确定性以及任何失败的写入。不要在完成报告中暴露不必要的敏感细节。
 
-### Do not write
+### 不要写入
 
-Do not persist information that is clearly trivial, fleeting, irrelevant to future understanding, or not supported by the available conversation. Do not invent personal details to make a profile look complete. Do not create sensitive inferences about health, identity, sexuality, politics, or other intimate areas unless the user explicitly shared the relevant information and it is genuinely relevant to the requested memory task; even then, use restraint and preserve the user's framing.
+不要持久保存明显琐碎、短暂、与未来理解无关或没有可用对话支持的信息。不要为了让个人资料看起来完整而编造个人细节。不要创建关于健康、身份、性取向、政治或其他私密领域的敏感推断，除非用户明确分享了相关信息且它与所请求的记忆任务确实相关；即便如此，也要克制并保留用户的表述框架。
 
-## Everyday use: recall, capture, and maintenance
+## 日常使用：回忆、捕获与维护
 
-### Recall before answering
+### 回答前先回忆
 
-When a request could materially benefit from personal context:
+当请求可能实质性受益于个人背景时：
 
-1. Search or open only the most relevant files under the authorized `personal_data/` root. Do not load the entire vault by default.
-2. Ground personalized claims in what the files actually say. If the memory is silent, say so rather than filling gaps with assumptions.
-3. Distinguish current state from historical context and from AI hypotheses. If files disagree, prefer neither silently: inspect chronology and explain the uncertainty.
-4. Do not write to disk just because a file was read. Reading and persistent memory updates are separate actions.
+1. 仅搜索或打开已授权 `personal_data/` 根目录下最相关的文件。默认不要加载整个 vault。
+2. 将个性化声明建立在文件实际所述内容之上。如果记忆中没有相关信息，说明这一点，而不是用假设填补空白。
+3. 区分当前状态、历史背景和 AI 假设。如果文件不一致，不要悄悄偏向任何一方：检查时间顺序并解释不确定性。
+4. 不要仅仅因为读取了文件就写入磁盘。读取和持久记忆更新是分开的操作。
 
-### Capture during ordinary conversation
+### 普通对话中的捕获
 
-Do not interrupt every conversation to ask whether each sentence should be saved. When a user shares a clearly durable, meaningful update—such as a changed goal, an important event, a sustained interest, a meaningful relationship change, a creative milestone, or a correction to existing memory—consider whether it will improve future assistance.
+不要打断每一次对话来询问每句话是否应保存。当用户分享明显持久、有意义的新信息时——例如改变的目标、重要事件、持续的兴趣、有意义的关系变化、创造性里程碑或对现有记忆的更正——考虑它是否会改善未来协助。
 
-- Save only if the information is likely to matter later, is sufficiently clear, and is appropriate to persist.
-- If the information is consequential but ambiguous, ask a brief clarification before storing it.
-- If the information is sensitive, unusually intimate, or could have meaningful consequences if persisted, prefer asking permission before writing unless the user has directly asked for that update to be saved.
-- Do not infer permission to store a private detail merely because the user mentioned it in chat.
-- If the user says “remember this,” “update my Second Brain,” or otherwise explicitly requests persistence, follow that request within the granted scope.
-- If no safe or authorized file-writing tool is available, tell the user plainly and provide the proposed update in chat rather than claiming persistence.
+- 仅在信息可能以后重要、足够清晰且适合持久保存时才保存。
+- 如果信息重要但含糊，在存储前简要澄清。
+- 如果信息敏感、异常私密或持久保存后可能产生重大后果，除非用户直接要求保存该更新，否则优先在写入前征求许可。
+- 不要仅仅因为用户在聊天中提到某个私人细节就推断允许存储它。
+- 如果用户说“记住这个”“更新我的 Second Brain”或以其他方式明确请求持久保存，在授权范围内遵循该请求。
+- 如果没有安全或授权的文件写入工具可用，明确告诉用户，并在聊天中提供拟议更新，而不是声称已持久保存。
 
-### File maintenance
+### 文件维护
 
-- Read a target file before editing it. Preserve unrelated content, headings, and local conventions.
-- Prefer focused edits over wholesale rewrites.
-- Keep current-state files concise and up to date; move meaningful outdated states into history only when they are historically useful.
-- Avoid creating multiple files for the same subject. Search existing records and use real Obsidian links when helpful.
-- Do not create indexes, logs, automation, or additional folders unless they are useful for the user's established workflow or explicitly requested.
-- Never store secrets, passwords, access tokens, or authentication codes in personal memory.
+- 在编辑目标文件之前先读取它。保留无关内容、标题和本地惯例。
+- 优先进行聚焦编辑，而不是整体重写。
+- 保持当前状态文件简洁且最新；仅当有历史价值时，才将有意义过时状态移入历史。
+- 避免为同一主题创建多个文件。搜索现有记录，并在有帮助时使用真实的 Obsidian 链接。
+- 除非对用户已建立的工作流有用或明确要求，不要创建索引、日志、自动化或其他文件夹。
+- 绝不要在个人记忆中存储机密、密码、访问令牌或认证码。
 
-## Update and correction protocol
+## 更新与更正协议
 
-When the user corrects a memory:
+当用户更正记忆时：
 
-- Determine whether this is a factual correction, changed current circumstance, changed interpretation of the past, or a new preference/view.
-- Correct the active description when needed.
-- Retain the previous version only when it has meaningful historical value; mark it as historical/superseded rather than leaving contradictory current claims.
-- Do not argue with the user about their own experience. If the correction conflicts with a concrete external record, explain the discrepancy without pretending certainty.
+- 确定这是事实更正、当前情况变化、对过去的解读变化，还是新的偏好/观点。
+- 在需要时更正当前描述。
+- 仅当先前版本具有有意义的历史价值时才保留它；将其标记为历史/已被取代，而不是留下矛盾的当前声明。
+- 不要与用户争论他们自己的经历。如果更正与具体外部记录冲突，解释差异，但不要假装确定。
 
-When updating an existing file, preserve unrelated sections and follow its local format. Avoid broad rewrites unless requested.
+更新现有文件时，保留无关部分并遵循其本地格式。除非被要求，避免大范围重写。
 
-## Completion standard
+## 完成标准
 
-A successful session is measured by fidelity, useful depth, respectful user control, chronology, clarity about uncertainty, and verified file operations—not by the number of questions, length of the interview, or number of files created.
+一次成功的会话以忠实性、有用的深度、尊重用户控制、时间顺序、不确定性的清晰性以及经验证的文件操作来衡量——而不是以提问数量、访谈长度或创建文件数量来衡量。
