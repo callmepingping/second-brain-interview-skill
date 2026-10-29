@@ -1,0 +1,12 @@
+# Personal memory and interview data
+personal_data/
+**/personal_data/
+
+# Local editor state
+.obsidian/
+
+# OS/editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
