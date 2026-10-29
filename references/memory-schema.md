@@ -1,56 +1,56 @@
-# Personal Memory Schema
+# 个人记忆架构
 
-This document defines the default role of each folder under `personal_data/`. If the user's existing knowledge base has a clearly established compatible schema, preserve it instead of imposing a migration.
-In the case of any special circumstances, the AI should appropriately adjust or the structure or create new folders.
+本文档定义了 `personal_data/` 下每个文件夹的默认职责。如果用户现有的知识库已有明确建立的兼容架构，则保留它，而不是强加迁移。
+在出现任何特殊情况时，AI 应适当调整结构或创建新文件夹。
 
-## `00_core_profile/profile.md` — foundational profile
+## `00_core_profile/profile.md` — 基础档案
 
-A concise, revisable overview of background, education/work when shared, stable long-term interests, and context that helps an agent understand the user. It is not a substitute for detailed history, relationships, or value-development records.
+一份简洁、可修订的背景概览，包括用户分享时的教育/工作经历、稳定的长期兴趣，以及有助于智能体理解用户的背景信息。它不能替代详细的历史、关系或价值观发展记录。
 
-## `01_background_and_life_history/` — important life history
+## `01_background_and_life_history/` — 重要人生历史
 
-Store meaningful experiences and their development. Prefer one file per substantial episode or long-running theme. When dates are known, use `YYYY-MM-DD-YYYY-MM-DD_history.md`; do not invent precise dates. If exact dates are unknown, choose a truthful approximate naming scheme and explain it in the file.
+存储有意义的经历及其发展过程。优先为每一段重要经历或长期主题使用一个文件。当日期已知时，使用 `YYYY-MM-DD-YYYY-MM-DD_history.md`；不要编造精确日期。如果确切日期未知，选择一个真实的近似命名方案，并在文件中说明。
 
-## `02_personality_and_behavior/personality_and_behavior.md` — patterns and behavior
+## `02_personality_and_behavior/personality_and_behavior.md` — 模式与行为
 
-Store recurring behavior patterns, habits, ways of working, and the user's own descriptions. Distinguish self-reported patterns from AI hypotheses. Avoid essentializing or diagnostic labels.
+存储反复出现的行为模式、习惯、工作方式以及用户自己的描述。区分自我报告的模式与 AI 假设。避免本质化或诊断性标签。
 
-## `03_values_beliefs_and_worldview/` — values and ideas
+## `03_values_beliefs_and_worldview/` — 价值观与思想
 
-Use one file per meaningful topic or development path, e.g. `YYYY-MM-DD_topic.md`. Preserve why an idea matters, experiences that shaped it, uncertainties, and changes over time.
+每个有意义的主题或发展路径使用一个文件，例如 `YYYY-MM-DD_topic.md`。保留一个想法为何重要、塑造它的经历、不确定性以及随时间的变化。
 
-## `04_relationships_and_social_environment/` — people and relationships
+## `04_relationships_and_social_environment/` — 人物与关系
 
-Use one file per significant person, relationship, group, or event, e.g. `YYYY-MM-DD_person-or-event.md`. Keep only information relevant to understanding the user's life and relationships; avoid unnecessary sensitive details about third parties.
+每个重要人物、关系、群体或事件使用一个文件，例如 `YYYY-MM-DD_person-or-event.md`。仅保留与理解用户生活和关系相关的信息；避免关于第三方的非必要敏感细节。
 
-## `05_interests_knowledge_and_exploration/` — interests and learning
+## `05_interests_knowledge_and_exploration/` — 兴趣与学习
 
-Record long-term interests, fields of exploration, developing knowledge, and changes in intellectual direction. Distinguish current interest from a past phase.
+记录长期兴趣、探索领域、发展中知识以及智识方向的变化。区分当前兴趣与过去阶段。
 
-## `06_ambitions_goals_and_plans/` — aims and plans
+## `06_ambitions_goals_and_plans/` — 抱负与计划
 
-Record meaningful goals, motivations, milestones, decisions, and changes. Mark status and time context so old plans do not appear current indefinitely.
+记录有意义的目标、动机、里程碑、决策和变化。标记状态和时间背景，以免旧计划无限期地看起来像当前计划。
 
-## `07_current_life/current.md` — current circumstances
+## `07_current_life/current.md` — 当前生活
 
-Maintain a concise view of current projects, routines, responsibilities, environment, and active concerns where shared. Replace stale current-state statements when new information arrives; preserve major past circumstances in life-history records when relevant.
+维护一份关于当前项目、日常安排、责任、环境以及（在分享时）活跃关切事项的简洁视图。当新信息到来时替换过时的当前状态声明；在相关时，将重大过往处境保留在人生历史记录中。
 
-## `08_emotions_and_reflections/current.md` — recent feelings and reflection
+## `08_emotions_and_reflections/current.md` — 近期感受与反思
 
-Capture recent emotions, concerns, unresolved questions, and evolving self-understanding that the user chose to share. Treat this as time-bound, not a permanent psychological profile. Distinguish explicit self-report from inference.
+记录用户选择分享的近期情绪、关切、未解决的问题以及不断发展的自我理解。将其视为有时间限制的内容，而不是永久的心理画像。区分明确的自我报告与推断。
 
-## `09_creative_work/` — projects and original work
+## `09_creative_work/` — 项目与原创作品
 
-Use `YYYY-MM-DD_work-name.md` when a meaningful creation date is known. Record project purpose, motivation, important decisions, evolution, and outcomes. For complete works, preserve the user's original text when appropriate and authorized; never present an AI rewrite as the user's original.
+当有意义的创作日期已知时，使用 `YYYY-MM-DD_work-name.md`。记录项目目的、动机、重要决策、演变和结果。对于完整作品，在适当且获得授权时保留用户的原文；绝不要将 AI 改写呈现为用户的原创。
 
-## Common metadata principles
+## 通用元数据原则
 
-For meaningful records, use a lightweight header or section that fits the file's existing style:
+对于有意义的记录，使用适合文件现有风格的轻量级标题或章节：
 
-- **Time of event**: when it happened, if known.
-- **Time described**: when the user recalled or described it, if known.
-- **Last updated**: when the file was actually updated, if known.
-- **Information status**: user-stated, user interpretation, reported information, AI hypothesis, or uncertain, when the distinction matters.
-- **Source**: a real, inspectable file path or external reference when available. Never invent a link. The interview skill does not create a transcript archive, so do not cite `conversations/` files that do not exist.
+- **事件时间**：事情发生的时间（若已知）。
+- **描述时间**：用户回忆或描述它的时间（若已知）。
+- **最后更新**：文件实际更新的时间（若已知）。
+- **信息状态**：在区分重要时，标注为用户陈述、用户解读、转述信息、AI 假设或不确定。
+- **来源**：可用时提供真实、可检查的文件路径或外部参考。绝不编造链接。访谈技能不会创建访谈记录归档，因此不要引用不存在的 `conversations/` 文件。
 
-The same experience may be referenced by several files, but each file should have one clear primary purpose. Use Obsidian links when the target file exists. Avoid copying a full story into every related folder.
+同一段经历可以被多个文件引用，但每个文件应有一个明确的主要目的。当目标文件存在时，使用 Obsidian 链接。避免将完整故事复制到每个相关文件夹中。
