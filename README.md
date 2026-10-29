@@ -1,6 +1,8 @@
 # Second Brain — Adaptive Life Interview & Memory Curation
 
-A model-agnostic Agent Skill for building a user-controlled personal knowledge base from an adaptive life interview. It combines dynamic, user-directed exploration with careful curation into ordinary Markdown files compatible with Obsidian.
+一款与模型无关的 Agent Skill，通过自适应人生访谈，帮助用户构建由自己掌控、兼容 Obsidian 的个人知识库，并以普通 Markdown 文件保存。
+
+A model-agnostic Agent Skill that uses an adaptive life interview to help users build a user-controlled personal knowledge base in ordinary Markdown files compatible with Obsidian.
 
 ## Important: grant access before use
 
