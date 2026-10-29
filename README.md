@@ -21,8 +21,8 @@
 
 ## 安装
 
-将整个仓库文件夹复制到你所使用的 Agent 支持的 skill 目录中，并保持文件结构完整，使 Skill 与其辅助参考文档一起保存。然后使用提示词“/Second_Brain_interview_start”
-
+在release下载second-brain-interview-skill.zip。然后使用提示词“/second_brain_interview_start”以开始
+b
 ## 隐私说明
 公共仓库中保留的仅是可复用的 Skill 指令内容。请将你的 personal_data/ 目录保持为私有，并放在这个项目仓库之外。请同时检查你所使用 AI 工具自己的数据处理和文件访问策略。
 
