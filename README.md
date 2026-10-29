@@ -1,78 +1,30 @@
 # Second Brain — Adaptive Life Interview & Memory Curation
 
-A model-agnostic Agent Skill that uses an adaptive life interview to help users build a user-controlled personal knowledge base in ordinary Markdown files compatible with Obsidian.
+这是一个 Agent Skill，它通过适应性的生活访谈帮助用户构建一个由用户掌控的个人知识库，并将内容保存为普通的 Markdown 文件，兼容 Obsidian。
 
-## Important: grant access before use
+## 重要：使用前请先授权
 
-**Before starting, explicitly enable file access for your AI agent in its project/workspace settings and grant access only to the knowledge-base directory you want it to use.** The skill cannot grant itself permissions. The agent must be able to read existing files and write updates to `personal_data/`.
+在开始之前，请显式为你的 AI Agent 在其项目/工作区设置中启用文件访问权限，并仅授予其访问你希望使用的知识库目录的权限。这个 Skill 本身无法代替你授予权限。
 
-Access controls vary by agent and operating environment. Follow the settings and permission flow of your chosen tool. If the runtime cannot read/write files, the skill can still conduct the interview conversationally, but it must not claim that files were saved.
+访问控制方式会因 Agent 及运行环境而不同。请遵循你所使用工具的设置和权限流程。如果当前运行环境无法读取或写入文件，Skill 仍然可以进行访谈，但无法完成长期记忆的落盘。
 
-## What it does
+## 它能做什么
 
-- Starts with two lightweight background questions: age/life stage and country/region. Exact birth date is optional.
-- Discovers interview topics from the user's answers instead of forcing a fixed life questionnaire.
-- Uses dynamic depth-first exploration while letting the user choose questions, combine answers, change topics, skip, or stop at any time.
-- Handles ambiguity and apparent contradictions by asking for clarification rather than guessing.
-- Distinguishes user-stated information, self-interpretation, reported information, AI inference, and uncertainty when the distinction matters.
-- After the interview, updates the appropriate `personal_data/` Markdown files and verifies writes when possible.
-- Preserves chronology, changes in views, and the user's authority to correct or delete memories.
+- 从两个轻量级的背景问题开始：年龄/人生阶段，以及国家/地区。精确出生日期可选填写。
+- 根据用户的回答发现访谈主题，而不是强制固定的一套生活问卷。
+- 使用动态的深度优先探索方式，同时允许用户选择问题、组合答案、切换话题、跳过或随时停止。
+- 能处理模糊信息和明显矛盾的内容，并在必要时要求澄清，而不是直接猜测。
+- 会区分用户陈述的信息、自我解释、转述信息、AI 推断，以及不确定性；当这些差异影响结论时，会明确区分。
+- 在访谈结束后，会更新相应的 `personal_data/` Markdown 文件，并在可能的情况下验证写入是否成功。
+- 保留时间顺序、观点变化以及用户纠正或删除记忆的权利。
+- 持续访谈，直到了解完全完整的用户画像
 
-## What it does not do
+## 安装
 
-- It does **not** create or maintain a `conversations/` folder or a separate interview transcript.
-- It does not bypass file permissions, promise automatic access, or report a write as successful without verification.
-- It does not require the user to answer every topic or infer that a skipped topic indicates a problem.
-- It does not include personal memory files in this public repository.
+将整个仓库文件夹复制到你所使用的 Agent 支持的 skill 目录中，并保持文件结构完整，使 Skill 与其辅助参考文档一起保存。然后使用提示词“/Second_Brain_interview_start”
 
-## Install
+## 隐私说明
+公共仓库中保留的仅是可复用的 Skill 指令内容。请将你的 personal_data/ 目录保持为私有，并放在这个项目仓库之外。请同时检查你所使用 AI 工具自己的数据处理和文件访问策略。
 
-Copy the entire repository folder into the skill directory supported by your agent. Keep the folder structure intact so the skill and its supporting reference stay together. For example, in a repository using the Agent Skills convention, the installed files should be:
-
-```text
-.agents/skills/second-brain/SKILL.md
-.agents/skills/second-brain/references/memory-schema.md
-```
-
-The acceptance test plan is at [`tests/acceptance-tests.md`](tests/acceptance-tests.md). Other agents may use a different skills directory. Check your agent's documentation and start a new session if required.
-
-## Use
-
-Try prompts such as:
-
-- “Start my Second Brain interview.”
-- “Continue building my personal memory.”
-- “Update my Second Brain with this change.”
-- “Review my current profile for outdated or unsupported claims.”
-
-Before an initialization interview, select the intended knowledge-base root and grant the agent the necessary access. The expected durable memory destination is `personal_data/`.
-
-## Default memory structure
-
-```text
-personal_data/
-├── 00_core_profile/profile.md
-├── 01_background_and_life_history/
-├── 02_personality_and_behavior/personality_and_behavior.md
-├── 03_values_beliefs_and_worldview/
-├── 04_relationships_and_social_environment/
-├── 05_interests_knowledge_and_exploration/
-├── 06_ambitions_goals_and_plans/
-├── 07_current_life/current.md
-├── 08_emotions_and_reflections/current.md
-└── 09_creative_work/
-```
-
-See [`memory-schema.md`](references/memory-schema.md) for file purposes and naming guidance.
-
-## Privacy note
-
-A public repository contains the reusable skill instructions only. Keep your `personal_data/` directory private and outside this project repository. Review your AI tool's own data handling and file-access settings; local Markdown storage does not by itself determine how your model provider processes chat content.
-
-## Design references
-
-The implementation borrows general structural ideas from public Agent Skills such as [`karpathy-llm-wiki`](https://github.com/Astro-Han/karpathy-llm-wiki) (a concise schema layer plus supporting references) and [`grill-me`](https://github.com/stevegsax/grill-me) (clear interaction boundaries). This project has its own interview logic and memory schema; it does not copy their content.
-
-## License
-
-MIT. See [`LICENSE`](LICENSE).
+## 许可证
+MIT。详见 LICENSE。
